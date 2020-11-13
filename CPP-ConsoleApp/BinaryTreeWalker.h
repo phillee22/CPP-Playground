@@ -2,14 +2,12 @@
 
 #include "TreeNode.h"
 
-class TreeWalker
+class BinaryTreeWalker
 {
 	
 public:
-	void Walk(TreeNode* root);
 	void PostOrder(TreeNode* root);
 	void PreOrder(TreeNode* root);
-	void ReverseOrder(TreeNode* root);
-	void SortedOrder(TreeNode* root);
+	void InOrder(TreeNode* root);
 };
 

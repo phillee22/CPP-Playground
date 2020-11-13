@@ -1,5 +1,3 @@
-// ConsoleApplication1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
 #include <cstdlib>
@@ -7,13 +5,72 @@
 #include "class1.h"
 #include "FileReader.h"
 #include "TreeNode.h"
-#include "TreeWalker.h"
+#include "BinaryTreeWalker.h"
+
+
+const int LINECOUNT = 20;
+
+void strManipulation();
+void BinaryTreeNodeExercise();
+void FileReaderExercise();
+void ShapeExercise();
 
 int main()
 {
-    const int LINECOUNT = 20;
-    std::string lines[LINECOUNT];
+    int x = 9;
 
+    strManipulation();
+
+    FileReaderExercise();
+
+    BinaryTreeNodeExercise();
+
+    ShapeExercise();
+
+
+    std::cout << "All done!\n";
+    return 0;
+}
+
+
+/*******
+ *   TREENODE
+ */
+void BinaryTreeNodeExercise()
+{
+
+    std::srand(time(0));
+    int values[LINECOUNT]; // = { 13,8,29,48,4903,238,27,57,1,59,845,37,853,37,12,45,81,58,7298,938 };
+    std::cout << "Here's the list of numbers:\n";
+    for (int i = 0; i < LINECOUNT; i++)
+    {
+        values[i] = std::rand() % 1000;
+        //*(values+i) = std::rand() % 1000;
+        std::cout << *(values + i) << "\n";
+    }
+    TreeNode* root = new TreeNode();
+    for (int i = 0; i < LINECOUNT; i++)
+    {
+        root->Insert(values[i]);
+    }
+
+    BinaryTreeWalker w;
+    std::cout << "Walking the tree in sorted order:\n";
+    w.PreOrder(root);
+
+    std::cout << "Walking the tree in reverse order:\n";
+    w.InOrder(root);
+
+    std::cout << "Walking the tree in sorted order:\n";
+    w.PostOrder(root);
+
+
+}
+
+
+void FileReaderExercise()
+{
+    std::string lines[LINECOUNT];
 
 #if 0
     //FileReader* fr = new FileReader(".\\random_strings.txt");
@@ -37,37 +94,21 @@ int main()
     std::string content((std::istreambuf_iterator<char>(ifs)), (std::istreambuf_iterator<char>()));
     std::cout << content << "\n";
 
-
-    /*
-     *   TREENODE
-     */
-    std::srand(time(0));
-    int values[LINECOUNT]; // = { 13,8,29,48,4903,238,27,57,1,59,845,37,853,37,12,45,81,58,7298,938 };
-    std::cout << "Here's the list of numbers:\n";
-    for (int i = 0; i < LINECOUNT; i++)
-    {
-        values[i] = std::rand() % 1000;
-        //*(values+i) = std::rand() % 1000;
-        std::cout << *(values + i) << "\n";
-    }
-    TreeNode* root = new TreeNode();
-    for (int i = 0; i < LINECOUNT; i++)
-    {
-        root->Insert(values[i]);
-    }
-
-    TreeWalker w;
-    std::cout << "Walking the tree in sorted order:\n";
-    w.SortedOrder(root);
-
-    std::cout << "Walking the tree in reverse order:\n";
-    w.ReverseOrder(root);
-
-
-    std::cout << "All done!\n";
-    return 0;
 }
 
+
+/*****
+ *
+ */
+void ShapeExercise()
+{
+
+}
+
+
+/*****
+ * 
+ */
 void strManipulation()
 {
     class1 c12;
